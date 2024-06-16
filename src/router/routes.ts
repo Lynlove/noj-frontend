@@ -1,11 +1,13 @@
 import { RouteRecordRaw } from "vue-router";
-import HomeView from "@/views/HomeView.vue";
+import HomeView from "@/views/ExampleView.vue";
 import AdminView from "@/views/AdminView.vue";
 import NoAuthView from "@/views/NoAuthView.vue";
 import ACCESS_ENUM from "@/access/accessEnum";
 import UserLayout from "@/layout/UserLayout.vue";
 import UserLoginView from "@/views/user/UserLoginView.vue";
 import UserRegisterView from "@/views/user/UserRegisterView.vue";
+import QuestionAddView from "@/views/question/AddQuestionView.vue";
+import ManageQuestionView from "@/views/question/manageQuestionView.vue";
 
 export const routes: Array<RouteRecordRaw> = [
   {
@@ -26,6 +28,30 @@ export const routes: Array<RouteRecordRaw> = [
     ],
     meta: {
       hideInMenu: true,
+    },
+  },
+  {
+    path: "/add/question",
+    name: "创建题目",
+    component: QuestionAddView,
+    meta: {
+      access: ACCESS_ENUM.ADMIN,
+    },
+  },
+  {
+    path: "/update/question",
+    name: "更新题目",
+    component: QuestionAddView,
+    meta: {
+      access: ACCESS_ENUM.ADMIN,
+    },
+  },
+  {
+    path: "/manage/question",
+    name: "管理题目",
+    component: ManageQuestionView,
+    meta: {
+      access: ACCESS_ENUM.ADMIN,
     },
   },
   {
