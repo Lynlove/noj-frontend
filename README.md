@@ -1,5 +1,8 @@
 # noj-frontend
-
+## 自动生成接口调用代码
+```shell
+openapi --input http://localhost:8101/api/v2/api-docs --output ./src/generated --client axios
+```
 ## Project setup
 ```
 npm install
