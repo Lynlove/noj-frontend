@@ -22,16 +22,19 @@
       </a-menu>
     </a-col>
     <a-col flex="100px">
-      <div>
+      <div v-if="store.state.user?.loginUser?.userName">
         <a-dropdown @select="handleSelect" trigger="hover">
           <a-button
             >{{ store.state.user?.loginUser?.userName ?? "未登录" }}
           </a-button>
           <template #content>
             <a-doption :value="'logout'">退出登录</a-doption>
-            <!--                        <a-doption :value="{ value: 'Option3' }">Option 3</a-doption>-->
           </template>
         </a-dropdown>
+      </div>
+
+      <div v-else>
+        <a class="router-link" @click="logout">未登录</a>
       </div>
     </a-col>
   </a-row>
@@ -124,5 +127,9 @@ const logout = () => {
 
 .arco-dropdown-open .arco-icon-down {
   transform: rotate(180deg);
+}
+
+.router-link {
+  text-decoration: none;
 }
 </style>
