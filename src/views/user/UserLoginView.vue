@@ -1,6 +1,14 @@
 <template>
   <div id="userLoginView">
     <h2>用户登录</h2>
+    <a-space>
+      <h2>
+        <routerLink class="router-link" to="/user/login">登录</routerLink>
+      </h2>
+      <h2>
+        <routerLink class="router-link" to="/user/register">注册</routerLink>
+      </h2>
+    </a-space>
     <a-form
       style="width: 480px; margin: 0 auto"
       label-align="left"
@@ -64,3 +72,8 @@ const handleSubmit = async () => {
   }
 };
 </script>
+<style>
+.router-link {
+  text-decoration: none;
+}
+</style>

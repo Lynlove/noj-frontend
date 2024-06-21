@@ -1,6 +1,14 @@
 <template>
   <div id="userLoginView">
     <h2>用户注册</h2>
+    <a-space>
+      <h2>
+        <routerLink class="router-link" to="/user/login">登录</routerLink>
+      </h2>
+      <h2>
+        <routerLink class="router-link" to="/user/register">注册</routerLink>
+      </h2>
+    </a-space>
     <a-form
       style="width: 480px; margin: 0 auto"
       label-align="left"
@@ -17,6 +25,13 @@
         label="账号"
       >
         <a-input v-model="form.userAccount" placeholder="请输入账号" />
+      </a-form-item>
+      <a-form-item
+        :rules="[{ required: true, message: '用户名不能为空' }]"
+        field="userName"
+        label="用户名"
+      >
+        <a-input v-model="form.userName" placeholder="请输入用户名" />
       </a-form-item>
       <a-form-item
         :rules="[
@@ -69,6 +84,7 @@ import { useStore } from "vuex";
  表单信息 */
 const form = reactive({
   userAccount: "",
+  userName: "",
   userPassword: "",
   checkPassword: "",
 });
@@ -94,6 +110,10 @@ const handleSubmit = async () => {
   //登录成功，跳转到主⻚
   if (res.code === 0) {
     message.success("注册成功,自动登录");
+    await UserControllerService.userLoginUsingPost({
+      userAccount: form.userAccount,
+      userPassword: form.userPassword,
+    });
     await store.dispatch("user/getLoginUser");
     await router.push({
       path: "/",
@@ -104,3 +124,8 @@ const handleSubmit = async () => {
   }
 };
 </script>
+<style>
+.router-link {
+  text-decoration: none;
+}
+</style>

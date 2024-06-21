@@ -23,7 +23,15 @@
     </a-col>
     <a-col flex="100px">
       <div>
-        {{ store.state.user?.loginUser?.userName ?? "未登录" }}
+        <a-dropdown @select="handleSelect" trigger="hover">
+          <a-button
+            >{{ store.state.user?.loginUser?.userName ?? "未登录" }}
+          </a-button>
+          <template #content>
+            <a-doption :value="'logout'">退出登录</a-doption>
+            <!--                        <a-doption :value="{ value: 'Option3' }">Option 3</a-doption>-->
+          </template>
+        </a-dropdown>
       </div>
     </a-col>
   </a-row>
@@ -36,6 +44,7 @@ import { computed, ref } from "vue";
 import { useStore } from "vuex";
 import checkAccess from "@/access/checkAccess";
 import ACCESS_ENUM from "@/access/accessEnum";
+import { UserControllerService } from "@/generated";
 
 const router = useRouter();
 const route = useRoute();
@@ -71,6 +80,25 @@ const doMenuClick = (key: string) => {
   router.push(key);
 };
 
+/**
+ * 处理下拉菜单的点击事件
+ * @param v
+ */
+const handleSelect = (v: string) => {
+  if (v === "logout") {
+    logout();
+  }
+};
+
+/**
+ * 退出登录
+ */
+const logout = () => {
+  console.log("退出登录");
+  UserControllerService.userLogoutUsingPost();
+  router.replace("/user/login");
+};
+
 // setTimeout(() => {
 //   store.dispatch("user/getLoginUser", {
 //     userName: "年年",
@@ -92,5 +120,9 @@ const doMenuClick = (key: string) => {
 .title {
   color: #444;
   margin-left: 16px;
+}
+
+.arco-dropdown-open .arco-icon-down {
+  transform: rotate(180deg);
 }
 </style>
