@@ -32,7 +32,9 @@
               </template>
             </a-card>
           </a-tab-pane>
-          <a-tab-pane key="comment" title="评论" disabled> 评论区</a-tab-pane>
+          <a-tab-pane key="comment" title="评论">
+            <Comment :question-id="questionId as number" />
+          </a-tab-pane>
           <a-tab-pane key="answer" title="答案"> 暂时无法查看答案</a-tab-pane>
         </a-tabs>
       </a-col>
@@ -81,6 +83,8 @@ import {
 import message from "@arco-design/web-vue/es/message";
 import CodeEditor from "@/components/CodeEditor.vue";
 import MdViewer from "@/components/MdViewer.vue";
+import Comment from "@/components/QuestionComment.vue";
+import { useRoute } from "vue-router";
 
 interface Props {
   id: string;
@@ -91,6 +95,9 @@ const props = withDefaults(defineProps<Props>(), {
 });
 
 const question = ref<QuestionVO>();
+
+const route = useRoute();
+const questionId = route.params.id;
 
 const loadData = async () => {
   const res = await QuestionControllerService.getQuestionVoByIdUsingGet(

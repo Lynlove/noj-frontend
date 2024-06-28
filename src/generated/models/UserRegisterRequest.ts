@@ -4,8 +4,8 @@
 /* eslint-disable */
 export type UserRegisterRequest = {
     checkPassword?: string;
-    userName?: string;
     userAccount?: string;
+    userName?: string;
     userPassword?: string;
 };
 

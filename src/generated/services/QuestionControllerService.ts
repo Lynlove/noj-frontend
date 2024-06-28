@@ -48,7 +48,7 @@ export class QuestionControllerService {
      * @returns any Created
      * @throws ApiError
      */
-    public static deleteQuestionUsingPost(
+    public static deleteQuestionUsingPost1(
         deleteRequest: DeleteRequest,
     ): CancelablePromise<BaseResponse_boolean_ | any> {
         return __request(OpenAPI, {
