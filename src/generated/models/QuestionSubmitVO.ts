@@ -13,7 +13,7 @@ export type QuestionSubmitVO = {
     language?: string;
     question?: QuestionVO;
     questionId?: number;
-    status?: number;
+    status?: string;
     updateTime?: string;
     user?: UserVO;
     userId?: number;

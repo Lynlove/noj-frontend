@@ -1,8 +1,20 @@
 // Add a request interceptor
 import axios from "axios";
+import { OpenAPI } from "@/generated";
 
 // axios.defaults.withCredentials = true;
 // axios.defaults.baseURL = "http://localhost:8101";
+
+// 携带凭证 cookie
+OpenAPI.WITH_CREDENTIALS = true;
+const baseUrl =
+  process.env.NODE_ENV === "development"
+    ? "http://localhost:8101"
+    : "http://124.223.46.236:8101";
+
+OpenAPI.BASE = baseUrl;
+console.log("当前环境：", process.env.NODE_ENV, "请求地址", baseUrl);
+
 axios.interceptors.request.use(
   function (config) {
     // Do something before request is sent
