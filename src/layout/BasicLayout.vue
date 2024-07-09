@@ -12,7 +12,16 @@ import GlobalHeader from "@/components/GlobalHeader.vue";
         <router-view />
       </a-layout-content>
       <a-layout-footer class="footer">
-        <a href="https://github.com/Lynlove" target="_blank"> 年年的GitHub</a>
+        <a
+          href="https://github.com/Lynlove"
+          target="_blank"
+          style="margin-right: 10px"
+        >
+          年年的GitHub</a
+        >
+        <a href="https://beian.miit.gov.cn/" target="_blank"
+          >湘ICP备2024072430号-1</a
+        >
       </a-layout-footer>
     </a-layout>
   </div>
