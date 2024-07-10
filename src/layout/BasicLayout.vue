@@ -12,22 +12,31 @@ import GlobalHeader from "@/components/GlobalHeader.vue";
         <router-view />
       </a-layout-content>
       <a-layout-footer class="footer">
-        <a
-          href="https://github.com/Lynlove"
-          target="_blank"
-          style="margin-right: 10px"
-        >
-          年年的GitHub</a
-        >
-        <a href="https://beian.miit.gov.cn/" target="_blank"
-          >湘ICP备2024072430号-1</a
-        >
+        <a-space>
+          <a class="link" href="https://github.com/Lynlove" target="_blank">
+            <icon-github />
+            年年的GitHub</a
+          >
+          <a class="link" href="https://beian.miit.gov.cn/" target="_blank"
+            >湘ICP备2024072430号-1</a
+          >
+          <a
+            class="link"
+            href="https://beian.mps.gov.cn/#/query/webSearch"
+            target="_blank"
+            >湘公网安备43090002000102号</a
+          >
+        </a-space>
       </a-layout-footer>
     </a-layout>
   </div>
 </template>
 
 <style scoped>
+.link {
+  text-decoration: none;
+}
+
 #basicLayout {
 }
 
