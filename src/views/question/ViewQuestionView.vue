@@ -112,7 +112,14 @@ const loadData = async () => {
 
 const form = ref<QuestionSubmitAddRequest>({
   language: "java",
-  code: "",
+  code:
+    "public class Main {\n" +
+    "    public static void main(String[] args) {\n" +
+    "        int a = Integer.parseInt(args[0]);\n" +
+    "        int b = Integer.parseInt(args[1]);\n" +
+    "        System.out.println(a + b);\n" +
+    "    }\n" +
+    "}",
 });
 
 /**
